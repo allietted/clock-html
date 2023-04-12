@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        #root {border: 1px solid red}
+    </style>
+
+    <title>Clock</title>
+</head>
+<body>
+    <div id="root">
+
+        <h1>Hi There</h1>
+
+
+    </div>
+    <script>
+        //Get new instance of the current date
+       const getCurrentTime=()=> {
+        const today = new Date();
+        //convert
+        let hour = today.getHours();
+        let minute = today.getMinutes();
+        let second = today.getSeconds();
+        let millisecond = today.getMilliseconds();
+
+        //check leading zero 
+        hour =checkLeadingZero(hour);
+        minute=checkLeadingZero(minute)
+        second =checkLeadingZero(second);
+        
+        //assemble
+        let currentTime= `${hour} :${minute} : ${second} : ${millisecond}`;
+
+       
+
+        
+        //render
+        document.querySelector("#root").innerHTML =currentTime;
+
+        getCurrentTime(getClock, 100)
+
+    }
+
+    const checkLeadingZero = (paramTime) => {
+        paramTime < 10
+        ? paramTime = "0"+paramTime //`0${paramTime}`
+        :null
+
+        return paramTime
+    }
+
+    getCurrentTime();   
+    </script>
+</body>
+</html>
